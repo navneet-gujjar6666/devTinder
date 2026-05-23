@@ -240,7 +240,7 @@ return (
             w-[92vw] sm:w-[260px]
             absolute
             top-28 sm:top-16
-            right-2 sm:right-6
+            right-2 sm:right-40
             overflow-hidden
             border border-gray-700
             z-[999]
