@@ -62,7 +62,7 @@ const userSchema = new mongoose.Schema(
     },
     photoUrl: {
       type: String,
-      default: "https://shhjshja.com",
+      default: "https://google.com-(you can add your link)",
       validate(value) {
         if (!validator.isURL(value)) {
           //first do(npm i validator) then validator= require("validator"); in app.js
