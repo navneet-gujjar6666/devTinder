@@ -312,8 +312,8 @@ const Chat = () => {
           pay chat-bubble
           bg-blue-500 text-white font-bold
           h-10 w-14 sm:w-15
-          absolute bottom-24 sm:bottom-22
-          right-4 sm:right-20
+          absolute bottom-17 sm:bottom-22
+          right-15 sm:right-20
           cursor-pointer
           text-sm
           flex items-center justify-center
