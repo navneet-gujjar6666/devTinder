@@ -92,8 +92,14 @@ if (requests.length === 0)
   );
 
 return (
-  <div className="text-center my-10">
-    <h1 className="text-3xl font-extrabold text-white mb-8 drop-shadow-lg">
+  <div className="text-center my-6 sm:my-10 px-3">
+    <h1
+      className="
+        text-2xl sm:text-3xl
+        font-extrabold text-white
+        mb-8 drop-shadow-lg
+      "
+    >
       Total Requests
     </h1>
 
@@ -104,8 +110,13 @@ return (
         <div
           key={_id}
           className="
-            group flex items-center gap-4 p-4
-            w-1/2 mx-auto mb-6
+            group
+            flex flex-col sm:flex-row
+            items-center
+            gap-4
+            p-4
+            w-[95vw] sm:w-[80vw] md:w-[60vw] lg:w-1/2
+            mx-auto mb-6
             bg-gradient-to-br from-gray-900 via-gray-800 to-black
             rounded-3xl shadow-xl
             transition-all duration-500
@@ -113,24 +124,63 @@ return (
           "
         >
           {/* User Image */}
-          <div className="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
+          <div
+            className="
+              relative
+              w-16 h-16 sm:w-20 sm:h-20
+              rounded-full overflow-hidden
+              flex-shrink-0
+            "
+          >
             <img
               src={photoUrl}
               alt="User"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              className="
+                w-full h-full object-cover
+                transition-transform duration-700
+                group-hover:scale-110
+              "
             />
+
             {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-full" />
+            <div
+              className="
+                absolute inset-0
+                bg-gradient-to-t
+                from-black/70 via-black/30 to-transparent
+                rounded-full
+              "
+            />
           </div>
 
           {/* User Info */}
-          <div className="flex-1 flex flex-col justify-center">
-            <h2 className="text-white text-xl font-bold drop-shadow-md">
+          <div
+            className="
+              flex-1 flex flex-col justify-center
+              items-center sm:items-start
+            "
+          >
+            <h2
+              className="
+                text-white
+                text-lg sm:text-xl
+                font-bold drop-shadow-md
+                text-center sm:text-left
+                break-words
+              "
+            >
               {firstName} {lastName}
             </h2>
 
             {/* Action Buttons */}
-            <div className="flex gap-4 mt-2 justify-center">
+            <div
+              className="
+                flex flex-col sm:flex-row
+                gap-3 sm:gap-4
+                mt-3
+                justify-center
+              "
+            >
               <button
                 onClick={() => reviewRequest("accepted", kyaBe._id)}
                 className="
@@ -141,10 +191,12 @@ return (
                   transition-all duration-300
                   hover:scale-105 hover:shadow-green-500/40
                   active:scale-95
+                  text-sm sm:text-base
                 "
               >
                 Accept
               </button>
+
               <button
                 onClick={() => reviewRequest("rejected", kyaBe._id)}
                 className="
@@ -155,6 +207,7 @@ return (
                   transition-all duration-300
                   hover:scale-105 hover:shadow-red-500/40
                   active:scale-95
+                  text-sm sm:text-base
                 "
               >
                 Reject
@@ -166,6 +219,5 @@ return (
     })}
   </div>
 );
-
 };
 export default Requests;
