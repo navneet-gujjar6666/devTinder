@@ -57,12 +57,27 @@
 -E2E testing
 
 ## AWS
+
+A.] fronEnd deployment
 1.] signIn AWS
 2.] signIn console as roootUser
 3.] Add Payment mode [We have already performed and we have to done this only one first time]
 4.] Go to Ec2
 5.] Launch instance [1)Web serverName, 2)select machine(ubuntu), 3)create keyPair 4)click launch]
 6.] on Launch instance dashBoard click on-(instance_id) then on connect
-7.] Open Powershell, cd to Downloads-( cd $env:USERPROFILE\Downloads), inside Downloads -(chmod 400 "NavneetTinder-secret.pem")  then-(ssh -i "NavneetTinder-secret.pem" ubuntu@ec2-3-239-216-186.compute-1.amazonaws.com) then type-(yes), now i will get the UbuntuMachine on powerShell, now powerShell is not refering to mine PC it is pointing to machine that is created by AWS web through Ubuntu you will see like this-(ubuntu@ip-172-31-3-81:), for shutDown type-(exit), for reStart type aboved one same as-(ssh -i "NavneetTinder-secret.pem" ubuntu@ec2-3-239-216-186.compute-1.amazonaws.com).
+7.] Open Powershell, cd to Downloads-( cd $env:USERPROFILE\Downloads), inside Downloads -(chmod 400 "NavneetTinder-secret.pem")  we have done this because we downloaded a key-pair file from AWS which is in the download folder in our PC,
+then-(ssh -i "NavneetTinder-secret.pem" ubuntu@ec2-3-239-216-186.compute-1.amazonaws.com) then type-( [yes], only firstTime creating UbuntuMachine second time no need ), now i will get the UbuntuMachine on powerShell, now powerShell is not refering to mine PC it is pointing to machine that is created by AWS web through Ubuntu you will see like this-(ubuntu@ip-172-31-3-81:), for shutDown type-(exit), for reStart type aboved one same as-(ssh -i "NavneetTinder-secret.pem" ubuntu@ec2-3-239-216-186.compute-1.amazonaws.com).
 8.] install node.js on poweShell infront of-(ubuntu@ip-172-31-3-81:) by coping command from node.js web site: for this you will get some issues so ask to chat gpt for install node with this Prompt:
    what happening here, we created a machine ubuntu on powershell which we get from aws website,  and my tutor gone to node.js wweb and copy comnd from there and paste in bash(as he have mac) but i have windows so powershell, but my tutor was saying use version that you have installed earlier like current is v24 but i have installed node v:22 so i done that cmd but i didnt installed node like this way i just go below and clicked a button window installer, i think that docker come now earlier was  not there
+9.] Clone gitHub file in powerShell(ubuntuMachine) like-(ubuntu@ip-172-31-3-81:~$ git clone https://your gitHub link), do-(ls) for check, then ubuntu have devtinder-(inside it frontend, backend) we will do-( cd devTinder/frontend), then inside -(ubuntu@ip-172-31-3-81:~/devTinder/frontend$) this-( sudo apt install npm), then-(npm run build, [it will create dist folder which contains all code of project in different format]), then-(sudo apt update), then-(sudo apt install nginx, [nginx creates Web-server and handles incoming web traffic by serving your frontend files and safely forwarding API requests to your backend, node.js creates application server this both are different]), then-(sudo systemctl start nginx), then-(sudo systemctl enable nginx), then-(sudo scp -r dist/* /var/www/html/, [copy all files from dist and paste in /var/www/html/])
+
+B.] BackEnd deployment
+1.] we didnt done, as very length is very big for intializing through AWS method by akshaySaini, now a days a single click can do that easily, so this step skiped, and domain name purchase also skipped because paid
+
+C.] Email functionality
+1.]goto AWS-->signIn to console-->search for IAM-->createUser(ses-user, [we have created this user at there])-->addPermisions-->attach policies directly-->amazonsesfullaccess
+2.]goto AWS-->AWS ses-->configuration(identities)-->createIdentity by email(not by domain as we didnt have domain)-->verify it
+3.]goto AWS-->AWS IAM-->access management(users)-->clickOnUser(ser-user)-->security credentials-->create access key-->choose other option then create key-->copy(access, secret key) and paste in backend(.env) file
+4.]goto AWS sdk for js web site-->click install from npm-->code examples(navBar)-->amazon SES-->sendEmail-->explore gitHub written there-->src folder-->libs folder-->sesClient.js(copy) into backend utils(sesClient.js)-->again to src folder-->sendEmails.js(copy) into backend utils(sendEmails.js)
+
+D.] cron functionality

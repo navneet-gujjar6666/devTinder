@@ -23,13 +23,17 @@ const Body = () => {
     const res= await axios.get(BASE_URL + "/profile/view", {
       withCredentials: true
     });
-    console.log("fromBody: ", res.data);
+    // console.log("fromBody: ", res.data);
     dispatch(addUser(res.data));
   } catch(err){
        if(err.status === 401){ //Means you have loggedOut or token timePeriod over, loggIn again now
           return navigate("/login");
        }
       console.error(err);
+
+       if(err){ //Means you have not loggined yet-(first render login handler)
+          return navigate("/login");
+       }
   }
   }
 

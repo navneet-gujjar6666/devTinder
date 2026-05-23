@@ -7,9 +7,12 @@ import { useDispatch } from "react-redux";
 const UserCard = ({ kya, showActions = false, mode }) => {
   //Or take (props)
 
-  const { firstName, lastName, photoUrl, _id, gender, about, age } = kya;
+  const { firstName, lastName, photoUrl, _id, gender, about, age, skills, experience, headline, location, gitHub } = kya;
   const dispatch = useDispatch();
 
+
+  
+  
   const handleSendRequest = async (status, userId) => {
     try {
       const res = await axios.post(
@@ -28,6 +31,13 @@ const UserCard = ({ kya, showActions = false, mode }) => {
   const handleSkipRequest = (jii) => {
     dispatch(skipUser(jii));
   };
+
+  const goToGitHub= ()=>{
+
+    if (!gitHub) return;
+
+    window.open(gitHub, "_blank", "noopener,noreferrer");
+};
 
   return (
     <div className="flex justify-center">
@@ -79,7 +89,11 @@ const UserCard = ({ kya, showActions = false, mode }) => {
             {age} {gender}
           </p>
 
-          <p className="text-xs text-gray-500 break-all">{about}</p>
+          <p className="text-xs text-zinc-300 text-4xl font-extrabold break-all">{about}</p>
+          <p className="text-xs text-zinc-300 text-4xl font-extrabold break-all">{skills}</p>
+          <p className="text-xs text-zinc-300 text-4xl font-extrabold break-all">{headline} with an experience of {experience} years</p>
+          <p className="text-xs text-zinc-300 text-4xl font-extrabold break-all">From {location}</p>
+
 
           {/* Actions */}
           {showActions && (
@@ -132,6 +146,7 @@ const UserCard = ({ kya, showActions = false, mode }) => {
           {mode == "edit" && (
             <div className="gitHub flex justify-center">
               <button
+                onClick={goToGitHub}
                 className="
         flex overflow-hidden items-center text-sm font-medium
         focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring

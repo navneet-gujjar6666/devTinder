@@ -1,13 +1,14 @@
 const express= require("express");
 const connectDB= require("./config/database.js");
 const app= express();
+const http = require("http");
 const User= require("./models/userSchema.js");
 const validator= require("validator");
 const {validateSignUpData}= require("./utils/validation.js");
 const bcrypt= require("bcrypt");  //npm i bcrypt
 const cookieParser= require("cookie-parser");  //npm i cookie-parser
 const cors= require("cors"); //npm i cors
-
+//require("./utils/cronJobs.js");, disabling it as mentioned reason in cron.js file at above
 
 app.use(cors({                      //This will solve the crossOriginConnection error between frontEnd and backEnd
   origin: "http://localhost:5173", // Vite frontend
@@ -25,6 +26,10 @@ const profileRouter= require("./routes/profile.js");
 const requestRouter= require("./routes/requests.js");
 const authRouter= require("./routes/authRoutes.js");
 const userRouter= require("./routes/userRoutes.js");
+const chatRouter= require("./routes/chatRouter.js");
+const initializeSocket = require("./utils/socket.js");
+const paymentRouter = require("./routes/payment.js");
+const aiRouter = require("./routes/aiRouter.js");
 
 
 //When ever any request comes it will go in this flow first-->profileRouter-->then requestRouter, authRouter, userRouter
@@ -32,6 +37,9 @@ app.use("/", profileRouter);
 app.use("/", requestRouter);
 app.use("/", authRouter);
 app.use("/", userRouter);
+app.use("/", chatRouter);
+app.use("/", paymentRouter);
+app.use("/", aiRouter);
 
 
 
@@ -188,13 +196,16 @@ app.patch("/update",async(req,res)=>{
 
 
 
+const server = http.createServer(app);
+initializeSocket(server);
+
 //COOKIES and JWT
 
 connectDB("APIs")
        . then(()=>{
         console.log("Database connection estabilized");
-        app.listen(5000,()=>{
-            console.log("Server is successfully listening on port 5555...");
+        server.listen(5000,()=>{
+            console.log("Server is successfully listening on port 5000...");
         });
        })
        .catch((error)=>{

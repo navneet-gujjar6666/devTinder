@@ -32,7 +32,7 @@ userRouter.get("/user/requests/received", userAuth, async(req,res)=>{
 
 
 
-const USER_SAFE_DATA= "firstName lastName photoUrl age gender about skills";
+const USER_SAFE_DATA= "firstName lastName photoUrl age gender about skills  experience headline location";
 //This api used to show how many connections the current loggedIn user has
 userRouter.get("/user/connections", userAuth, async(req,res)=>{
     try{

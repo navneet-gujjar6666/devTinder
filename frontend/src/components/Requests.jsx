@@ -54,8 +54,27 @@ const reviewRequest = async (status, _id) => {
 
 
 
-  if (!requests) return;
+    if (!requests){
+    return (
+      <h1 className="text-center text-4xl font-extrabold tracking-wider
+          bg-gradient-to-r from-yellow-300 via-amber-500 to-yellow-600
+          bg-clip-text text-transparent
+          after:content-['']
+          after:absolute after:inset-0
+          after:bg-gradient-to-r
+          after:from-transparent after:via-white/40 after:to-transparent
+          after:-translate-x-full
+          hover:after:translate-x-full
+          after:transition-transform after:duration-700
+          drop-shadow-[0_2px_8px_rgba(255,200,0,0.7)]
+        ">
+        {" "}
+        Issue While Fetching Requests
+      </h1>
+    );
+  }
 
+  
 if (requests.length === 0)
   return (
     <div className="flex justify-center items-center h-64">

@@ -31,7 +31,7 @@ const connectionRequestSchema= new mongoose.Schema({
         }
     }
 }, {
-    Timestamps: true
+    timestamps: true
 });
 
 connectionRequestSchema.index({ fromUserId: 1, toUserId: 1});//Helps in search query if 1million entries in DB as

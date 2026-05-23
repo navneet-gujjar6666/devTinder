@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constatnts";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("pravesh@gmail.com");
-  const [password, setPassword] = useState("Pravesh@1111");
+  const [emailId, setEmailId] = useState("xyz@gmail.com");
+  const [password, setPassword] = useState(""); //xyz@1111
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [isLoginForm, setIsLoginForm] = useState(true);
@@ -31,7 +31,7 @@ const Login = () => {
       );
       console.log(res.data);
       dispatch(addUser(res.data.data)); //We have done here res.data.data instead of only res.data because inside data two things:
-                                        //1.]]Message, 2.]Data so till reaching 2.]Data inside big Data we have to done all this.
+                                        //1.]Message, 2.]Data so till reaching 2.]Data inside big Data we have to done all this.
       return navJi("/");
     } catch (err) {
       setError(error?.response?.data || "Something went wrong");
@@ -124,7 +124,7 @@ const Login = () => {
             {/* Email */}
             <div className="inputData animate-fadeUp delay-100">
               <fieldset className="fieldset">
-                <label className="fieldset-legend text-gray-300 ml-2 mt-6">
+                <label className="fieldset-legend text-gray-300 ml-2 mt-2">
                   Email
                 </label>
                 <input

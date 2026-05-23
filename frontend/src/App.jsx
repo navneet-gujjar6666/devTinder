@@ -9,6 +9,11 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Connection from "./components/Connection.jsx";
 import Requests from "./components/Requests.jsx";
+import Premium from "./components/Premium.jsx";
+import Chat from "./components/Chat.jsx";
+import Ai from "./components/Ai.jsx";
+import Selected from "./components/Selected.jsx";
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,9 +27,13 @@ function App() {
               <Route path="/" element={<Feed />} />{/*They all are children routes*/}
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/selected" element={<Selected />} />
               <Route path="/connections" element={<Connection />} />
               <Route path="/requests" element={<Requests />} />
-            </Route>
+              <Route path="/premium" element={<Premium />} />
+              <Route path="/chat/:targetUserId" element={<Chat />} />
+              <Route path="/ai" element={<Ai />} />
+            </Route>  
           </Routes>
         </BrowserRouter>
       </Provider>

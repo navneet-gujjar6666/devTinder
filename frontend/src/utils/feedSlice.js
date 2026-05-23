@@ -19,7 +19,7 @@ const feedSlice= createSlice({
     // ✅ NEW: skip logic
     skipUser: (state, action) => {
       const index = state.findIndex(
-        user => user._id === action.payload
+        (user)=> user._id === action.payload
       );
 
       if (index !== -1) {
