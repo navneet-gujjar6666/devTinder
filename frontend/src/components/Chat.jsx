@@ -205,10 +205,10 @@ const Chat = () => {
   return (
     <div
       className="
-      w-[95vw] sm:w-[90vw] md:w-3/4
+      w-[95vw] sm:w-[60vw] md:w-3/4
       mx-auto
       border border-gray-600
-      my-4 sm:m-5
+      my-4
       h-[78vh] sm:h-[70vh]
       flex flex-col
       relative
