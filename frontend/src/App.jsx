@@ -11,7 +11,6 @@ import Connection from "./components/Connection.jsx";
 import Requests from "./components/Requests.jsx";
 import Premium from "./components/Premium.jsx";
 import Chat from "./components/Chat.jsx";
-import Ai from "./components/Ai.jsx";
 import Selected from "./components/Selected.jsx";
 
 
@@ -32,7 +31,6 @@ function App() {
               <Route path="/requests" element={<Requests />} />
               <Route path="/premium" element={<Premium />} />
               <Route path="/chat/:targetUserId" element={<Chat />} />
-              <Route path="/ai" element={<Ai />} />
             </Route>  
           </Routes>
         </BrowserRouter>
