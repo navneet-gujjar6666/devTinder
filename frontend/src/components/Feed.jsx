@@ -31,20 +31,30 @@ const Feed = () => {
   }, [user]); //🔑user-driven fetch
 
   if (!user) {
-    return (
-      <div
-        className="
-      navbar mt-10 mb-10 h-52
+return (
+  <div
+    className="
+      navbar
+      mt-6 sm:mt-10
+      mb-6 sm:mb-10
+      min-h-[160px] sm:h-52
       border-b border-white/10
       shadow-xl
-      px-6 z-[999] flex justify-center items-center text-center
+      px-3 sm:px-6
+      z-[999]
+      flex justify-center items-center
+      text-center
     "
-      >
-        {/* LEFT: Logo */}
-        <div className="flex-1">
-          <Link
-            className="
-          relative text-8xl font-extrabold tracking-wider
+  >
+    {/* LEFT: Logo */}
+    <div className="flex-1 flex justify-center">
+      <Link
+        className="
+          relative
+          text-4xl sm:text-6xl md:text-8xl
+          font-extrabold
+          tracking-wide sm:tracking-wider
+          break-words
           bg-gradient-to-r from-yellow-300 via-amber-500 to-yellow-600
           bg-clip-text text-transparent
           after:content-['']
@@ -56,12 +66,12 @@ const Feed = () => {
           after:transition-transform after:duration-700
           drop-shadow-[0_2px_8px_rgba(255,200,0,0.7)]
         "
-          >
-            DevTinder.Com
-          </Link>
-        </div>
-      </div>
-    );
+      >
+        DevTinder.Com
+      </Link>
+    </div>
+  </div>
+);
   }
 
   if (!feed) {
