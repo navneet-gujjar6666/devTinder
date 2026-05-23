@@ -9,6 +9,7 @@ const bcrypt= require("bcrypt");  //npm i bcrypt
 const cookieParser= require("cookie-parser");  //npm i cookie-parser
 const cors= require("cors"); //npm i cors
 //require("./utils/cronJobs.js");, disabling it as mentioned reason in cron.js file at above
+const PORT = process.env.PORT || 5000;
 
 app.use(cors({                      //This will solve the crossOriginConnection error between frontEnd and backEnd
   origin: "https://dev-tinder-liart.vercel.app/", // Vite frontend-("http://localhost:5173")
@@ -204,7 +205,7 @@ initializeSocket(server);
 connectDB("APIs")
        . then(()=>{
         console.log("Database connection estabilized");
-        server.listen(5000,()=>{
+        server.listen(PORT,()=>{
             console.log("Server is successfully listening on port 5000...");
         });
        })
