@@ -99,68 +99,6 @@ authRouter.post("/logout2", async (req, res) => {
   res.send("Logout Sucessfull!!");
 });
 
-// authRouter.get("/search", async (req, res) => {
-//   try {
-//     const search = req.query.name;
-
-//     if (!search) {
-//       return res.json([]);
-//     }
-
-// const users = await User.find({
-//   $or: [
-//     {
-//       firstName: {
-//         $regex: search,
-//         $options: "i",
-//       },
-//     },
-//     {
-//       lastName: {
-//         $regex: search,
-//         $options: "i",
-//       },
-//     },
-//   ],
-// }).limit(5);
-
-//     res.json(users);
-
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// });
-
-// authRouter.get("/search2", async (req, res) => {
-//   try {
-
-//     const query = req.query.name;
-
-//     if (!query) {
-//       return res.json([]);
-//     }
-
-//     // 1. Convert user query into embedding
-//     const queryEmbedding = await generateEmbedding(query);
-
-//     // 2. MongoDB Vector Search (Atlas required)
-//     const users = await User.aggregate([
-//       {
-//         $vectorSearch: {
-//           index: "userVectorIndex",
-//           path: "embedding",
-//           queryVector: queryEmbedding,
-//           numCandidates: 100,
-//           limit: 5,
-//         },
-//       },
-//     ]);
-
-//     res.json(users);
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// });
 
 authRouter.get("/search", async (req, res) => {
   try {
@@ -186,14 +124,6 @@ authRouter.get("/search", async (req, res) => {
     // Check if query looks like a sentence / AI search
     const isSemanticQuery =
        trimmedSearch.split(" ").length > 2;
-      // || trimmedSearch.toLowerCase().includes("developer") ||
-      // trimmedSearch.toLowerCase().includes("experience") ||
-      // trimmedSearch.toLowerCase().includes("years") ||
-      // trimmedSearch.toLowerCase().includes("react") ||
-      // trimmedSearch.toLowerCase().includes("node") ||
-      // trimmedSearch.toLowerCase().includes("frontend") ||
-      // trimmedSearch.toLowerCase().includes("backend") ||
-      // trimmedSearch.toLowerCase().includes("fullstack");
 
     // 1. If normal name search, use regex first
     if (!isSemanticQuery) {
@@ -222,17 +152,7 @@ authRouter.get("/search", async (req, res) => {
     // 2. If sentence-like query OR normal search found nothing, use AI semantic search
     const queryEmbedding = await generateEmbedding(trimmedSearch);
 
-    // const semanticUsers = await User.aggregate([
-    //   {
-    //     $vectorSearch: {
-    //       index: "userVectorIndex",
-    //       path: "embedding",
-    //       queryVector: queryEmbedding,
-    //       numCandidates: 100,
-    //       limit: 5,
-    //     },
-    //   },
-    // ]);
+
 
     const semanticUsers = await User.aggregate([
       {

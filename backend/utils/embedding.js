@@ -12,12 +12,12 @@ async function generateEmbedding(dataJi) {
     contents: dataJi,
   });
 
-  console.log("Chaloo wapis");
+
   // // console.log(response.embeddings[0].values);
   // return response.embeddings[0].values;
 
 const embedding = response.embeddings[0].values;
-console.log("Embedding length:", embedding.length);
+// console.log("Embedding length:", embedding.length);
 return embedding;
   
 }

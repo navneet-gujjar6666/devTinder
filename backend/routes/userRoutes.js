@@ -163,55 +163,6 @@ userRouter.get("/feed", userAuth, async(req,res)=>{
    so we commented this and still using askhaySaini FEED logic aboved one but issue still not resolved, which is taking very much
    time to solved so leaving this issue and moving forward and i think akshaySaini didnt noticed this issue, we are doing by
    our own.
-userRouter.get("/feed", userAuth, async (req, res) => {
-  try {
-    const loggedInUser = req.user;
-
-    // 1️⃣ Find all connection requests involving logged-in user
-    const requests = await connectionRequestModel
-      .find({
-        $or: [
-          { fromUserId: loggedInUser._id },
-          { toUserId: loggedInUser._id }
-        ]
-      })
-      .select("fromUserId toUserId");
-
-    // 2️⃣ Build a set of users to hide FROM THIS USER'S FEED
-    const hideUsersFromFeed = new Set();
-
-    requests.forEach(req => {
-      if (req.fromUserId.toString() === loggedInUser._id.toString()) {
-        hideUsersFromFeed.add(req.toUserId.toString());
-      } else {
-        hideUsersFromFeed.add(req.fromUserId.toString());
-      }
-    });
-
-    // 3️⃣ Always hide self
-    hideUsersFromFeed.add(loggedInUser._id.toString());
-
-    // 4️⃣ Pagination
-    const page = parseInt(req.query.page) || 1;
-    let limit = parseInt(req.query.limit) || 10;
-    limit = limit > 50 ? 50 : limit;
-    const skip = (page - 1) * limit;
-
-    // 5️⃣ Fetch users NOT in hide list
-    const users = await User.find({
-      _id: { $nin: Array.from(hideUsersFromFeed) }
-    })
-      .select(USER_SAFE_DATA)
-      .skip(skip)
-      .limit(limit);
-
-    // 6️⃣ Send response
-    res.status(200).json({ data: users });
-
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
 */
 
 

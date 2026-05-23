@@ -41,11 +41,6 @@ profileRouter.patch("/profile/edit", userAuth, async(req,res)=>{
             
 
             // //embedding concept:
-            // const textForEmbedding =
-            //  `${loggedInUser.firstName} ${loggedInUser.lastName} ` +
-            //  `${loggedInUser.about} ` +
-            //  `${loggedInUser.skills?.join(" ")}`;
-
              const textForEmbedding =
              `Name: ${loggedInUser.firstName} ${loggedInUser.lastName}. ` +
              `Headline: ${loggedInUser.headline}. ` +
