@@ -11,7 +11,7 @@ const cors= require("cors"); //npm i cors
 //require("./utils/cronJobs.js");, disabling it as mentioned reason in cron.js file at above
 
 app.use(cors({                      //This will solve the crossOriginConnection error between frontEnd and backEnd
-  origin: "http://localhost:5173", // Vite frontend
+  origin: "https://devtinder-dhpr.onrender.com", // Vite frontend-("http://localhost:5173")
   credentials: true
 })); 
 app.use(express.json()); //Used for converting raw string body data into object string data then putting inside-(req.body)
