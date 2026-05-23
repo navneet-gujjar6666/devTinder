@@ -132,6 +132,12 @@ return (
             placeholder="Search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onFocus={() => setShow(true)}
+            onBlur={() => {
+                setTimeout(() => {
+                  setShow(false);
+                }, 200);
+              }}
             className="
               input input-bordered
               h-9
