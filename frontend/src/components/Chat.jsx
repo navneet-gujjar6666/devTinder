@@ -203,39 +203,63 @@ const Chat = () => {
 
 
   return (
-    <div className="w-3/4 mx-auto border border-gray-600 m-5 h-[70vh] flex flex-col relative">
+    <div
+      className="
+      w-[95vw] sm:w-[90vw] md:w-3/4
+      mx-auto
+      border border-gray-600
+      my-4 sm:m-5
+      h-[78vh] sm:h-[70vh]
+      flex flex-col
+      relative
+      overflow-hidden
+    "
+    >
       <div className="header flex relative">
-      <h1 className="p-5 border-b border-gray-600 bg-green-800 text-3xl font-bold text-white w-full">
-        Chatting
-      </h1>
-    {/* Right Side */}
-  {targetedUser && (<div className="flex items-center gap-3 absolute right-0 top-2">
-    
-    {/* First Name */}
-    <p className="text-white font-semibold text-lg">
-   {targetedUser.firstName} 
-   </p>
+        <h1
+          className="
+          p-4 sm:p-5
+          border-b border-gray-600
+          bg-green-800
+          text-xl sm:text-3xl
+          font-bold text-white
+          w-full
+        "
+        >
+          Chatting
+        </h1>
 
-    {/* DP */}
-    <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-black">
-      <img
-        src={targetedUser.photoUrl}
-        alt="profile"
-        className="w-full h-full object-cover"
-      />
-    </div>
+        {targetedUser && (
+          <div
+            className="
+            flex items-center gap-2 sm:gap-3
+            absolute right-2 sm:right-4
+            top-2
+          "
+          >
+            <p className="text-white font-semibold text-sm sm:text-lg max-w-[90px] sm:max-w-none truncate">
+              {targetedUser.firstName}
+            </p>
 
-  </div>)}
-
+            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-black">
+              <img
+                src={targetedUser.photoUrl}
+                alt="profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       <div
-        className="backgroundImage flex-1 overflow-auto p-5 bg-cover bg-center bg-repeat relative"
+        className="backgroundImage flex-1 overflow-auto p-2 sm:p-5 bg-cover bg-center bg-repeat relative"
         style={{ backgroundImage: `url(${ok})` }}
       >
-        <div className="flex-1  p-5">
+        <div className="flex-1 p-2 sm:p-5">
           {messages.map((msg, index) => {
             const value = user.firstName === msg.firstName;
+
             return (
               <div
                 key={index}
@@ -244,18 +268,30 @@ const Chat = () => {
                   (user.firstName === msg.firstName ? "chat-end" : "chat-start")
                 }
               >
-                <div className="chat-header">
-                  {`${msg.firstName}  ${msg.lastName}`}
+                <div className="chat-header text-xs sm:text-sm">
+                  {`${msg.firstName} ${msg.lastName}`}
                 </div>
+
                 <div
-                  className={`chat-bubble ${value ? " bg-green-500" : " bg-red-500"} text-[17px] relative`}
+                  className={`
+                  chat-bubble
+                  ${value ? "bg-green-500" : "bg-red-500"}
+                  text-sm sm:text-[17px]
+                  relative
+                  max-w-[75vw] sm:max-w-md
+                  break-words
+                `}
                 >
                   {msg.text}
-                  <div className="time flex justify-end items-end">
-                    <time className="text-xs opacity-50">{msg.time}</time>
-                    <div className="text-[10px]">
-  {msg.seen ? "✓✓ Seen" : "✓ Sent"}
-</div>
+
+                  <div className="time flex justify-end items-end gap-1 mt-1">
+                    <time className="text-[10px] sm:text-xs opacity-50">
+                      {msg.time}
+                    </time>
+
+                    <div className="text-[9px] sm:text-[10px]">
+                      {msg.seen ? "✓✓ Seen" : "✓ Sent"}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -265,23 +301,42 @@ const Chat = () => {
       </div>
 
       {typingUser && (
-        <div className="px-5 py-2 text-white italic bg-green-700">
+        <div className="px-3 sm:px-5 py-2 text-white italic bg-green-700 text-sm sm:text-base">
           {typingUser} is typing...
         </div>
       )}
 
-     {jao && (<div className="pay chat-bubble bg-blue-500 text-white font-bold h-10 w-15 absolute bottom-22 right-20 cursor-pointer"
-                onClick={()=>handleBuy("silver")}>
-       PAY
-      </div>)}
+      {jao && (
+        <div
+          className="
+          pay chat-bubble
+          bg-blue-500 text-white font-bold
+          h-10 w-14 sm:w-15
+          absolute bottom-24 sm:bottom-22
+          right-4 sm:right-20
+          cursor-pointer
+          text-sm
+          flex items-center justify-center
+        "
+          onClick={() => handleBuy("silver")}
+        >
+          PAY
+        </div>
+      )}
 
-      <div className="p-5 border-t border-gray-600 bg-green-900 flex items-center gap-2">
+      <div
+        className="
+        p-3 sm:p-5
+        border-t border-gray-600
+        bg-green-900
+        flex items-center gap-2
+      "
+      >
         <input
           value={newMessage}
           onChange={(e) => {
             setNewMessage(e.target.value);
 
-            //  const socket = createSocketConnection();
             socketRef.current.emit("typing", {
               firstName: user.firstName,
               userId,
@@ -293,12 +348,36 @@ const Chat = () => {
               sendMessage();
             }
           }}
-          className="flex-1 border border-gray-500 bg-white text-black rounded p-2"
-        ></input>
-        <button onClick={handlePayment} className="bg-pink-600 rounded-3xl"><Plus /></button>
+          className="
+          flex-1
+          min-w-0
+          border border-gray-500
+          bg-white text-black
+          rounded
+          p-2
+          text-sm sm:text-base
+        "
+        />
+
+        <button
+          onClick={handlePayment}
+          className="
+          bg-pink-600
+          rounded-3xl
+          p-2
+          flex-shrink-0
+        "
+        >
+          <Plus size={18} />
+        </button>
+
         <button
           onClick={sendMessage}
-          className="btn btn-secondary bg-amber-400"
+          className="
+          btn btn-secondary bg-amber-400
+          btn-sm sm:btn-md
+          flex-shrink-0
+        "
         >
           Send
         </button>
