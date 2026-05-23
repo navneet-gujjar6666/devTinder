@@ -226,7 +226,7 @@ const Chat = () => {
           w-full
         "
         >
-          Chatting
+        Chatting
         </h1>
 
         {targetedUser && (
