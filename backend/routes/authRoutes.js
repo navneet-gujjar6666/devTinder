@@ -81,8 +81,11 @@ authRouter.post("/login2", async (req, res) => {
       console.log("we are here at cokies");
       res.cookie("token", valueOk, {
         expires: new Date(Date.now() + 8 * 3600000),
-        sameSite: "lax",
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
       });
+
 
       res.json({ message: "Login Succesfull:", data: user });
     } else {
