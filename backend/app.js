@@ -12,7 +12,7 @@ const cors= require("cors"); //npm i cors
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({                      //This will solve the crossOriginConnection error between frontEnd and backEnd
-  origin: "https://dev-tinder-liart.vercel.app/", // Vite frontend-("http://localhost:5173")
+  origin: "https://dev-tinder-liart.vercel.app", // Vite frontend-("http://localhost:5173")
   credentials: true
 })); 
 app.use(express.json()); //Used for converting raw string body data into object string data then putting inside-(req.body)
