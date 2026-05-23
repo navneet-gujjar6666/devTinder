@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constatnts";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("xyz@gmail.com");
+  const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState(""); //xyz@1111
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -137,7 +137,7 @@ const Login = () => {
                         transition-all duration-300
                         text-sm sm:text-base
                       "
-                        placeholder="Type here"
+                        placeholder="Ex: Akshay"
                         onChange={(e) => setFirstName(e.target.value)}
                       />
                     </fieldset>
@@ -168,7 +168,7 @@ const Login = () => {
                         transition-all duration-300
                         text-sm sm:text-base
                       "
-                        placeholder="Type here"
+                        placeholder="Ex: Kumar"
                         onChange={(e) => setLastName(e.target.value)}
                       />
                     </fieldset>
@@ -202,7 +202,7 @@ const Login = () => {
                     transition-all duration-300
                     text-sm sm:text-base
                   "
-                    placeholder="Type here"
+                    placeholder="Ex: xyz@gmail.com"
                     onChange={(e) => setEmailId(e.target.value)}
                   />
                 </fieldset>
@@ -234,7 +234,7 @@ const Login = () => {
                     transition-all duration-300
                     text-sm sm:text-base
                   "
-                    placeholder="Type here"
+                    placeholder="Ex: Akshay@1111"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </fieldset>
