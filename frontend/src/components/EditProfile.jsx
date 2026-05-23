@@ -91,67 +91,85 @@ const EditProfile = ({ wow }) => {
   }
 
 
-
-  return (
-    <>
-      <div className="flex gap-6 justify-center min-h-[70%]">
-        <div className="flex justify-center">
-          <div
-            className="
-            w-96 rounded-3xl overflow-hidden
+return (
+  <>
+    <div
+      className="
+        flex flex-col lg:flex-row
+        gap-8 lg:gap-6
+        justify-center
+        items-center lg:items-start
+        min-h-[70%]
+        px-3 sm:px-6
+      "
+    >
+      {/* EDIT FORM */}
+      <div className="flex justify-center w-full lg:w-auto">
+        <div
+          className="
+            w-[95vw] sm:w-[85vw] md:w-[70vw] lg:w-96
+            rounded-3xl overflow-hidden
             bg-gradient-to-br from-gray-900 via-gray-800 to-black
             shadow-xl hover:shadow-2xl
             transition-all duration-500
           "
-          >
-            <div
-              style={{ animation: "slideInFromLeft 1s ease-out" }}
-              className="
-              relative pt-16 p-8 space-y-8
-              text-white h-[85vh]
+        >
+          <div
+            style={{ animation: "slideInFromLeft 1s ease-out" }}
+            className="
+              relative pt-16 p-5 sm:p-8
+              space-y-8
+              text-white
+              h-auto lg:h-[85vh]
               overflow-hidden
             "
-            >
-              <h2
-                style={{ animation: "appear 2s ease-out" }}
-                className="
-                absolute top-0 left-0 w-full h-16
+          >
+            {/* HEADING */}
+            <h2
+              style={{ animation: "appear 2s ease-out" }}
+              className="
+                absolute top-0 left-0
+                w-full h-14 sm:h-16
                 flex items-center justify-center
-                text-3xl font-extrabold tracking-wide
+                text-2xl sm:text-3xl
+                font-extrabold tracking-wide
                 bg-gradient-to-r from-emerald-500 to-green-600
                 shadow-lg
               "
-              >
-                Edit Profile
-              </h2>
+            >
+              Edit Profile
+            </h2>
 
-              <p
-                style={{ animation: "appear 3s ease-out" }}
-                className="text-center text-gray-400"
-              >
-                Your Profile
-              </p>
+            <p
+              style={{ animation: "appear 3s ease-out" }}
+              className="text-center text-gray-400 text-sm sm:text-base"
+            >
+              Your Profile
+            </p>
 
-              <div className="space-y-6 overflow-y-auto h-full pr-2 hide-scrollbar">
-                {/* First Name */}
-                <div className="relative mt-2">
-                  <input
-                    id="firstName"
-                    type="text"
-                    value={firstName}
-                    required
-                    placeholder="Type Here"
-                    className="
+            {/* FORM */}
+            <div className="space-y-6 overflow-y-auto h-full pr-1 sm:pr-2 hide-scrollbar">
+
+              {/* First Name */}
+              <div className="relative mt-2">
+                <input
+                  id="firstName"
+                  type="text"
+                  value={firstName}
+                  required
+                  placeholder="Type Here"
+                  className="
                     peer h-10 w-full
                     border-b border-gray-600
                     bg-transparent text-white
                     focus:outline-none focus:border-emerald-500
                   "
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                  <label
-                    htmlFor="firstName"
-                    className="
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+
+                <label
+                  htmlFor="firstName"
+                  className="
                     absolute left-0 -top-3.5 text-sm
                     text-gray-500 transition-all
                     peer-placeholder-shown:top-2
@@ -159,30 +177,31 @@ const EditProfile = ({ wow }) => {
                     peer-focus:-top-3.5
                     peer-focus:text-emerald-400
                   "
-                  >
-                    First Name
-                  </label>
-                </div>
+                >
+                  First Name
+                </label>
+              </div>
 
-                {/* Last Name */}
-                <div className="relative">
-                  <input
-                    id="lastName"
-                    type="text"
-                    value={lastName}
-                    required
-                    placeholder="Type Here"
-                    className="
+              {/* Last Name */}
+              <div className="relative">
+                <input
+                  id="lastName"
+                  type="text"
+                  value={lastName}
+                  required
+                  placeholder="Type Here"
+                  className="
                     peer h-10 w-full
                     border-b border-gray-600
                     bg-transparent text-white
                     focus:outline-none focus:border-emerald-500
                   "
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                  <label
-                    htmlFor="lastName"
-                    className="
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+
+                <label
+                  htmlFor="lastName"
+                  className="
                     absolute left-0 -top-3.5 text-sm
                     text-gray-500 transition-all
                     peer-placeholder-shown:top-2
@@ -190,30 +209,31 @@ const EditProfile = ({ wow }) => {
                     peer-focus:-top-3.5
                     peer-focus:text-emerald-400
                   "
-                  >
-                    Last Name
-                  </label>
-                </div>
+                >
+                  Last Name
+                </label>
+              </div>
 
-                {/* Age */}
-                <div className="relative">
-                  <input
-                    id="age"
-                    type="text"
-                    value={age}
-                    required
-                    placeholder="Type Here"
-                    className="
+              {/* Age */}
+              <div className="relative">
+                <input
+                  id="age"
+                  type="text"
+                  value={age}
+                  required
+                  placeholder="Type Here"
+                  className="
                     peer h-10 w-full
                     border-b border-gray-600
                     bg-transparent text-white
                     focus:outline-none focus:border-emerald-500
                   "
-                    onChange={(e) => setAge(e.target.value)}
-                  />
-                  <label
-                    htmlFor="age"
-                    className="
+                  onChange={(e) => setAge(e.target.value)}
+                />
+
+                <label
+                  htmlFor="age"
+                  className="
                     absolute left-0 -top-3.5 text-sm
                     text-gray-500 transition-all
                     peer-placeholder-shown:top-2
@@ -221,30 +241,31 @@ const EditProfile = ({ wow }) => {
                     peer-focus:-top-3.5
                     peer-focus:text-emerald-400
                   "
-                  >
-                    Age
-                  </label>
-                </div>
+                >
+                  Age
+                </label>
+              </div>
 
-                {/* Gender */}
-                <div className="relative">
-                  <input
-                    id="gender"
-                    type="text"
-                    value={gender}
-                    required
-                    placeholder="Type Here"
-                    className="
+              {/* Gender */}
+              <div className="relative">
+                <input
+                  id="gender"
+                  type="text"
+                  value={gender}
+                  required
+                  placeholder="Type Here"
+                  className="
                     peer h-10 w-full
                     border-b border-gray-600
                     bg-transparent text-white
                     focus:outline-none focus:border-emerald-500
                   "
-                    onChange={(e) => setGender(e.target.value)}
-                  />
-                  <label
-                    htmlFor="gender"
-                    className="
+                  onChange={(e) => setGender(e.target.value)}
+                />
+
+                <label
+                  htmlFor="gender"
+                  className="
                     absolute left-0 -top-3.5 text-sm
                     text-gray-500 transition-all
                     peer-placeholder-shown:top-2
@@ -252,35 +273,50 @@ const EditProfile = ({ wow }) => {
                     peer-focus:-top-3.5
                     peer-focus:text-emerald-400
                   "
-                  >
-                    Gender
-                  </label>
-                </div>
+                >
+                  Gender
+                </label>
+              </div>
 
-                {/* About */}
-                <div className="relative">
-                 
-                  <textarea
-                    id="about"
-                    type="text"
-                    value={about}
-                    required
-                    placeholder="Type Here"
-                    className="
-                    peer mt-3 h-fit w-[250px] hide-scrollbar overflow-y-auto
-                    whitespace-pre-wrap  resize-none
+              {/* About */}
+              <div className="relative">
+                <textarea
+                  id="about"
+                  value={about}
+                  required
+                  placeholder="Type Here"
+                  className="
+                    peer mt-3
+                    min-h-[120px]
+                    w-full
+                    hide-scrollbar overflow-y-auto
+                    whitespace-pre-wrap resize-none
                     border-b border-gray-600
                     bg-transparent text-white
                     focus:outline-none focus:border-emerald-500
+                    pr-20
                   "
-                    onChange={(e) => setAbout(e.target.value)}
-                  />
-                  <button className="btn btn-secondary h-5 w-[60px] border-2 pl-10 pr-10 border-amber-50 absolute right-0 top-0" onClick={generateAi} disabled={loading}>
-                    {loading ? "Thinking..." : "AboutAi"}
-                    </button>
-                  <label
-                    htmlFor="about"
-                    className="
+                  onChange={(e) => setAbout(e.target.value)}
+                />
+
+                <button
+                  className="
+                    btn btn-secondary
+                    h-8
+                    min-h-0
+                    text-xs sm:text-sm
+                    px-3
+                    absolute right-0 top-0
+                  "
+                  onClick={generateAi}
+                  disabled={loading}
+                >
+                  {loading ? "Thinking..." : "AboutAi"}
+                </button>
+
+                <label
+                  htmlFor="about"
+                  className="
                     absolute left-0 -top-3.5 text-sm
                     text-gray-500 transition-all
                     peer-placeholder-shown:top-2
@@ -288,10 +324,11 @@ const EditProfile = ({ wow }) => {
                     peer-focus:-top-3.5
                     peer-focus:text-emerald-400
                   "
-                  >
-                    About
-                  </label>
-                </div>
+                >
+                  About
+                </label>
+              </div>
+
 
                 {/* Photo URL */}
                 <div className="relative">
@@ -481,44 +518,60 @@ const EditProfile = ({ wow }) => {
                 </div>  
 
 
-                <p className="text-rose-400">{error}</p>
+              <p className="text-rose-400 text-sm break-words">{error}</p>
 
-                {/* Save Button */}
-                <button
-                  onClick={saveProfile}
-                  className="
-                  w-full py-3 rounded-full mb-8
-                  text-lg font-semibold text-white
+              {/* Save Button */}
+              <button
+                onClick={saveProfile}
+                className="
+                  w-full py-3 rounded-full mb-6
+                  text-base sm:text-lg
+                  font-semibold text-white
                   bg-gradient-to-r from-emerald-500 to-green-600
                   shadow-md
                   transition-all duration-300
                   hover:scale-105 hover:shadow-emerald-500/40
                   active:scale-95
                 "
-                >
-                  Save Profile
-                </button>
-              </div>
+              >
+                Save Profile
+              </button>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* User Card Preview (unchanged) */}
+      {/* USER CARD */}
+      <div className="w-full lg:w-auto flex justify-center">
         <UserCard
-          kya={{ firstName, lastName, photoUrl, age, gender, about, skills, experience, headline, location, gitHub }}
+          kya={{
+            firstName,
+            lastName,
+            photoUrl,
+            age,
+            gender,
+            about,
+            skills,
+            experience,
+            headline,
+            location,
+            gitHub,
+          }}
           mode={"edit"}
         />
       </div>
+    </div>
 
-      {toast && (
-        <div className="toast toast-top toast-end z-1000">
-          <div className="alert alert-success">
-            <span>Profile UPDATED successfully.</span>
-          </div>
+    {/* TOAST */}
+    {toast && (
+      <div className="toast toast-top toast-end z-[1000]">
+        <div className="alert alert-success">
+          <span>Profile UPDATED successfully.</span>
         </div>
-      )}
-    </>
-  );
+      </div>
+    )}
+  </>
+);
 };
 
 export default EditProfile;
