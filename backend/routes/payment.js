@@ -119,7 +119,7 @@ Or from some hacker/fake request?)
 paymentRouter.get("/premium/verify", userAuth, async (req, res) => {
   
   const user = req.user.toJSON();
-  user.isPremium= true;
+  user.isPremium= false;
 
   if (user.isPremium) {
     return res.json({ ...user }); //return res.json({ isPremium: true});
